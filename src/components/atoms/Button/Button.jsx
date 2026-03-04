@@ -1,6 +1,6 @@
 import styles from './Button.module.css';
 
-// Використовуємо деструктуризацію пропсів для чистоти коду
+
 const Button = ({ children, onClick, variant = 'primary' }) => {
   return (
     <button 
