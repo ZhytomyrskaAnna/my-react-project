@@ -1,6 +1,6 @@
 import Button from './components/atoms/Button/Button.jsx';
-import Input from './components/atoms/Input/Input'; 
-import Card from './components/molecules/Card/Card'; 
+import Input from './components/atoms/Input/Input.jsx'; 
+import Card from './components/molecules/Card/Card.jsx'; 
 import Header from "./components/organisma/Header.jsx";
 
 function App() {
