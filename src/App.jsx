@@ -10,6 +10,7 @@ function App() {
   
   const [showHelp, setShowHelp] = useState(false);
   const [filterActive, setFilterActive] = useState(false);
+  const [activeTab, setActiveTab] = useState('list');
   
   const totalScore = students.reduce((acc, student) => acc + student.score, 0);
   const averageScore = students.length > 0 ? (totalScore / students.length).toFixed(1) : 0;
@@ -25,59 +26,73 @@ function App() {
   return (
     <>
       
-      <div style={{ padding: '20px', borderBottom: '1px solid #ddd' }}>
+      {/* НАВІГАЦІЯ (Таби) */}
+    <div style={{ 
+      display: 'flex', 
+      justifyContent: 'center', 
+      gap: '10px', 
+      padding: '20px', 
+      backgroundColor: '#fff',
+      borderBottom: '2px solid #eee'
+    }}>
+      <Button 
+        onClick={() => setActiveTab('list')} 
+        variant={activeTab === 'list' ? 'primary' : 'secondary'}
+      >
+        Всі студенти
+      </Button>
+      <Button 
+        onClick={() => setActiveTab('stats')} 
+        variant={activeTab === 'stats' ? 'primary' : 'secondary'}
+      >
+        Статистика
+      </Button>
+      <Button 
+        onClick={() => setActiveTab('about')} 
+        variant={activeTab === 'about' ? 'primary' : 'secondary'}
+      >
+        Про автора
+      </Button>
+    </div>
 
-        <Button onClick={() => setShowHelp(!showHelp)} variant="secondary">
-          {showHelp ? "Приховати інструкцію" : "Показати інструкцію"}
-        </Button>
+    <div style={{ padding: '20px', minHeight: '400px' }}>
+      
+      {/* Tab 1: Список студентів */}
+      {activeTab === 'list' && (
+        <div>
+          <h1>Список студентів</h1>
+          <Button onClick={() => setFilterActive(!filterActive)} variant="primary">
+            {filterActive ? "Показати всіх" : "Показати тільки успішних"}
+          </Button>
+          <ul>
+            {studentsToDisplay.map((student) => (
+              <li key={student.id}>
+                <strong>{student.name}</strong> — Бал: {student.score}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
-        {showHelp && (
-          <div style={{ 
-            marginTop: '10px', 
-            padding: '10px', 
-            backgroundColor: '#e3f2fd', 
-            borderRadius: '5px',
-            color: '#0d47a1'
-          }}>
-            <p><strong>Довідка:</strong> Ця сторінка дозволяє керувати списками студентів, переглядати стрічку новин та ставити лайки постам.</p>
-          </div>
-        )}
-      </div>
+      {/* Tab 2: Статистика */}
+      {activeTab === 'stats' && (
+        <div style={{ backgroundColor: '#fff3e0', padding: '20px', borderRadius: '8px' }}>
+          <h3>Аналітика курсу</h3>
+          <p>Загальна кількість: <strong>{students.length}</strong></p>
+          <p>Середній бал: <strong>{averageScore}</strong></p>
+        </div>
+      )}
 
-      <div style={{ 
-        padding: '15px', 
-        margin: '20px', 
-        backgroundColor: '#fff3e0', 
-        borderRadius: '8px',
-        border: '1px solid #ffb74d' 
-      }}>
-        <h3>Статистика курсу</h3>
-        <p>Загальна кількість студентів: <strong>{students.length}</strong></p>
-        <p>Середній бал групи: <strong style={{ color: '#e65100' }}>{averageScore}</strong></p>
-      </div>
+      {/* Tab 3: Про автора */}
+      {activeTab === 'about' && (
+        <Card>
+          <h2>Про автора</h2>
+          <p>Цю лабораторну роботу виконав студент групи 101.</p>
+          <p>Вивчення React: Lists, Keys & Conditional Rendering.</p>
+        </Card>
+      )}
 
-      <div style={{ padding: '20px' }}>
-        <h1>{filterActive ? "Успішні студенти" : "Всі студенти"}</h1>
-        
-        <Button onClick={() => setFilterActive(!filterActive)} variant="primary">
-          {filterActive ? "Показати всіх" : "Показати тільки успішних"}
-        </Button>
-
-        <ul style={{ marginTop: '15px' }}>
-          {studentsToDisplay.map((student) => (
-            <li key={student.id} style={{ marginBottom: '8px' }}>
-              <strong>{student.name}</strong> — Бал: {student.score} 
-              <span style={{ 
-                marginLeft: '10px', 
-                color: student.score >= 60 ? 'green' : 'red',
-                fontWeight: 'bold'
-              }}>
-                [{student.score >= 60 ? 'Зараховано' : 'Незараховано'}]
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
+    </div>
 
       <div style={{ padding: '20px', backgroundColor: '#f9f9f9' }}>
         <h1 style={{ textAlign: 'center' }}>Стрічка новин</h1>
