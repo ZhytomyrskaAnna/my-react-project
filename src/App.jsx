@@ -2,10 +2,10 @@ import Button from './components/atoms/Button/Button.jsx';
 import Input from './components/atoms/Input/Input.jsx'; 
 import Card from './components/molecules/Card/Card.jsx'; 
 import Header from "./components/organisma/Header.jsx";
-import { students } from './data';
+import Post from './components/molecules/Post/Post.jsx';
+import { students, postsData } from './data';
 
 function App() {
-  // 1. Обчислення (завжди робимо перед return)
   const totalScore = students.reduce((acc, student) => acc + student.score, 0);
   const averageScore = students.length > 0 ? (totalScore / students.length).toFixed(1) : 0;
 
@@ -52,7 +52,19 @@ function App() {
         </ul>
       </div>
 
-      
+      <div style={{ padding: '20px', backgroundColor: '#f9f9f9' }}>
+        <h1 style={{ textAlign: 'center' }}>Стрічка новин</h1>
+        <div style={{ maxWidth: '600px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          {postsData.map((post) => (
+            <Post
+              key={post.id} 
+              {...post} через spread operator
+            />
+          ))}
+        </div>
+      </div>
+
+
       <div style={{ 
         display: 'flex', 
         justifyContent: 'center', 

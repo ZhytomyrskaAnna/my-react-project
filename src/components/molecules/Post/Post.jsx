@@ -1,4 +1,4 @@
-import Button from './components/atoms/Button/Button';
+import Button from '../../atoms/Button/Button';
 import Card from '../Card/Card';           
 import styles from './Post.module.css';
 
