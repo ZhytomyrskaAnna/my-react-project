@@ -9,9 +9,14 @@ import { useState } from 'react';
 function App() {
   
   const [showHelp, setShowHelp] = useState(false);
+  const [filterActive, setFilterActive] = useState(false);
   
   const totalScore = students.reduce((acc, student) => acc + student.score, 0);
   const averageScore = students.length > 0 ? (totalScore / students.length).toFixed(1) : 0;
+
+   const studentsToDisplay = filterActive 
+    ? students.filter(s => s.score > 60) 
+    : students;
 
   const handleLogin = () => {
     alert('Логіка входу буде реалізована пізніше');
@@ -52,26 +57,25 @@ function App() {
       </div>
 
       <div style={{ padding: '20px' }}>
-        <h1>Список всіх студентів</h1>
-        <ul>
-          {students.map((student) => (
-            <li key={student.id}>
-              <strong>{student.name}</strong> — Бал: {student.score} (Група {student.group})
+        <h1>{filterActive ? "Успішні студенти" : "Всі студенти"}</h1>
+        
+        <Button onClick={() => setFilterActive(!filterActive)} variant="primary">
+          {filterActive ? "Показати всіх" : "Показати тільки успішних"}
+        </Button>
+
+        <ul style={{ marginTop: '15px' }}>
+          {studentsToDisplay.map((student) => (
+            <li key={student.id} style={{ marginBottom: '8px' }}>
+              <strong>{student.name}</strong> — Бал: {student.score} 
+              <span style={{ 
+                marginLeft: '10px', 
+                color: student.score >= 60 ? 'green' : 'red',
+                fontWeight: 'bold'
+              }}>
+                [{student.score >= 60 ? 'Зараховано' : 'Незараховано'}]
+              </span>
             </li>
           ))}
-        </ul>
-      </div>
-
-      <div style={{ padding: '20px', backgroundColor: '#e8f5e9', marginTop: '20px' }}>
-        <h2>Успішні студенти (бал {'>'} 60)</h2>
-        <ul>
-          {students
-            .filter((student) => student.score > 60)
-            .map((student) => (
-              <li key={student.id} style={{ color: 'green', fontWeight: 'bold' }}>
-                {student.name} — {student.score} балів
-              </li>
-            ))}
         </ul>
       </div>
 
