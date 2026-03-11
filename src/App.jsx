@@ -3,6 +3,7 @@ import Input from './components/atoms/Input/Input.jsx';
 import Card from './components/molecules/Card/Card.jsx'; 
 import Header from "./components/organisma/Header.jsx";
 import Post from './components/molecules/Post/Post.jsx';
+import styles from './App.module.css';
 import { students, postsData } from './data';
 import { useState } from 'react';
 
@@ -12,8 +13,8 @@ function App() {
   const [filterActive, setFilterActive] = useState(false);
   const [activeTab, setActiveTab] = useState('list');
   
-  const totalScore = students.reduce((acc, student) => acc + student.score, 0);
-  const averageScore = students.length > 0 ? (totalScore / students.length).toFixed(1) : 0;
+  const totalScore = students.reduce((acc, student) => acc + (student.score || 0), 0);
+  const averageScore = students.length > 0 ? (totalScore / students.length).toFixed(1) : 0;;
 
    const studentsToDisplay = filterActive 
     ? students.filter(s => s.score > 60) 
@@ -26,98 +27,107 @@ function App() {
   return (
     <>
       
-      {/* НАВІГАЦІЯ (Таби) */}
-    <div style={{ 
-      display: 'flex', 
-      justifyContent: 'center', 
-      gap: '10px', 
-      padding: '20px', 
-      backgroundColor: '#fff',
-      borderBottom: '2px solid #eee'
-    }}>
-      <Button 
-        onClick={() => setActiveTab('list')} 
-        variant={activeTab === 'list' ? 'primary' : 'secondary'}
-      >
-        Всі студенти
-      </Button>
-      <Button 
-        onClick={() => setActiveTab('stats')} 
-        variant={activeTab === 'stats' ? 'primary' : 'secondary'}
-      >
-        Статистика
-      </Button>
-      <Button 
-        onClick={() => setActiveTab('about')} 
-        variant={activeTab === 'about' ? 'primary' : 'secondary'}
-      >
-        Про автора
-      </Button>
-    </div>
+      <nav style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        gap: '10px', 
+        padding: '20px', 
+        backgroundColor: '#fff',
+        borderBottom: '2px solid #eee'
+      }}>
+        <Button 
+          onClick={() => setActiveTab('list')} 
+          className={activeTab === 'list' ? styles.activeTab : ''}
+          variant={activeTab === 'list' ? 'primary' : 'secondary'}
+        >
+          Всі студенти
+        </Button>
+        <Button 
+          onClick={() => setActiveTab('stats')} 
+          className={activeTab === 'stats' ? styles.activeTab : ''}
+          variant={activeTab === 'stats' ? 'primary' : 'secondary'}
+        >
+          Статистика
+        </Button>
+        <Button 
+          onClick={() => setActiveTab('about')} 
+          className={activeTab === 'about' ? styles.activeTab : ''}
+          variant={activeTab === 'about' ? 'primary' : 'secondary'}
+        >
+          Про автора
+        </Button>
+      </nav>
 
-    <div style={{ padding: '20px', minHeight: '400px' }}>
-      
-      {/* Tab 1: Список студентів */}
-      {activeTab === 'list' && (
-        <div>
-          <h1>Список студентів</h1>
-          <Button onClick={() => setFilterActive(!filterActive)} variant="primary">
-            {filterActive ? "Показати всіх" : "Показати тільки успішних"}
-          </Button>
-          <ul>
-            {studentsToDisplay.map((student) => (
-              <li key={student.id}>
-                <strong>{student.name}</strong> — Бал: {student.score}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      {/* КОНТЕНТ ТАБІВ */}
+      <main style={{ padding: '20px', minHeight: '400px' }}>
+        
+        {/* Tab 1: Список студентів + Empty State */}
+        {activeTab === 'list' && (
+          <div>
+            <h1>{filterActive ? "Успішні студенти" : "Повний список"}</h1>
+            <Button onClick={() => setFilterActive(!filterActive)} variant="primary">
+              {filterActive ? "Показати всіх" : "Тільки успішні (>60)"}
+            </Button>
 
-      {/* Tab 2: Статистика */}
-      {activeTab === 'stats' && (
-        <div style={{ backgroundColor: '#fff3e0', padding: '20px', borderRadius: '8px' }}>
-          <h3>Аналітика курсу</h3>
-          <p>Загальна кількість: <strong>{students.length}</strong></p>
-          <p>Середній бал: <strong>{averageScore}</strong></p>
-        </div>
-      )}
+            <div style={{ marginTop: '20px' }}>
+              {studentsToDisplay.length === 0 ? (
+                <p style={{ textAlign: 'center', color: 'gray' }}>За вашим запитом нікого не знайдено 🔎</p>
+              ) : (
+                <ul>
+                  {studentsToDisplay.map((student) => (
+                    <li key={student.id} style={{ marginBottom: '10px' }}>
+                      <strong>{student.name}</strong> — 
+                      {/* Оператор нульового злиття ?? для захисту від відсутньої оцінки */}
+                      Бал: {student.score ?? "Оцінка відсутня"}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        )}
 
-      {/* Tab 3: Про автора */}
-      {activeTab === 'about' && (
-        <Card>
-          <h2>Про автора</h2>
-          <p>Цю лабораторну роботу виконав студент групи 101.</p>
-          <p>Вивчення React: Lists, Keys & Conditional Rendering.</p>
-        </Card>
-      )}
+        {/* Tab 2: Статистика */}
+        {activeTab === 'stats' && (
+          <div style={{ backgroundColor: '#fff3e0', padding: '20px', borderRadius: '8px', border: '1px solid #ffb74d' }}>
+            <h3>Аналітика курсу</h3>
+            <p>Загальна кількість студентів: <strong>{students.length}</strong></p>
+            <p>Середній бал групи: <strong>{averageScore}</strong></p>
+          </div>
+        )}
 
-    </div>
+        {/* Tab 3: Про автора */}
+        {activeTab === 'about' && (
+          <Card>
+            <h2>Про автора</h2>
+            <p>Цю лабораторну роботу виконав студент групи 101.</p>
+            <p>Вивчення React: Списки, Ключі, Умовний рендеринг та Стан.</p>
+          </Card>
+        )}
+      </main>
 
-      <div style={{ padding: '20px', backgroundColor: '#f9f9f9' }}>
-        <h1 style={{ textAlign: 'center' }}>Стрічка новин</h1>
+      <hr />
+
+      {/* СТРІЧКА НОВИН */}
+      <section style={{ padding: '20px', backgroundColor: '#f9f9f9' }}>
+        <h2 style={{ textAlign: 'center' }}>Стрічка новин</h2>
         <div style={{ maxWidth: '600px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '20px' }}>
           {postsData.map((post) => (
-            <Post
-              key={post.id} 
-              {...post} через spread operator
-            />
+            <Post key={post.id} {...post} />
           ))}
         </div>
-      </div>
+      </section>
 
-
-      <div style={{ 
+      {/* ФОРМА ВХОДУ */}
+      <section style={{ 
         display: 'flex', 
         justifyContent: 'center', 
         alignItems: 'center', 
-        padding: '40px 0',
+        padding: '60px 0',
         backgroundColor: '#f0f2f5' 
       }}>
         <Card>
-          <h2 style={{ marginBottom: '20px', textAlign: 'center' }}>
-            Ласкаво просимо
-          </h2>
+          <h2 style={{ marginBottom: '20px', textAlign: 'center' }}>Вхід до системи</h2>
           <div style={{ marginBottom: '15px' }}>
             <Input type="email" placeholder="Email" label="Електронна пошта" />
           </div>
@@ -129,7 +139,7 @@ function App() {
             <Button variant="secondary">Реєстрація</Button>
           </div>
         </Card>
-      </div>
+      </section>
     </>
   );
 }

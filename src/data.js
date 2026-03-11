@@ -65,4 +65,5 @@ export const students = [
   { id: 5, name: "Дмитро", score: 98, group: "A" },
   { id: 6, name: "Олена", score: 55, group: "C" },
   { id: 7, name: "Андрій", score: 56, group: "B" },
+  { id: 8, name: "Олексій", group: "A"}
 ];

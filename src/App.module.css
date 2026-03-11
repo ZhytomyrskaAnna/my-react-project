@@ -1,0 +1,14 @@
+.activeTab {
+  border: 2px solid #000 !important;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+}
+
+.tabsNav {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  padding: 20px;
+  background: #f8f9fa;
+}
