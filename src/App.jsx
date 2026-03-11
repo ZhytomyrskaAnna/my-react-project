@@ -4,8 +4,12 @@ import Card from './components/molecules/Card/Card.jsx';
 import Header from "./components/organisma/Header.jsx";
 import Post from './components/molecules/Post/Post.jsx';
 import { students, postsData } from './data';
+import { useState } from 'react';
 
 function App() {
+  
+  const [showHelp, setShowHelp] = useState(false);
+  
   const totalScore = students.reduce((acc, student) => acc + student.score, 0);
   const averageScore = students.length > 0 ? (totalScore / students.length).toFixed(1) : 0;
 
@@ -16,6 +20,25 @@ function App() {
   return (
     <>
       
+      <div style={{ padding: '20px', borderBottom: '1px solid #ddd' }}>
+
+        <Button onClick={() => setShowHelp(!showHelp)} variant="secondary">
+          {showHelp ? "Приховати інструкцію" : "Показати інструкцію"}
+        </Button>
+
+        {showHelp && (
+          <div style={{ 
+            marginTop: '10px', 
+            padding: '10px', 
+            backgroundColor: '#e3f2fd', 
+            borderRadius: '5px',
+            color: '#0d47a1'
+          }}>
+            <p><strong>Довідка:</strong> Ця сторінка дозволяє керувати списками студентів, переглядати стрічку новин та ставити лайки постам.</p>
+          </div>
+        )}
+      </div>
+
       <div style={{ 
         padding: '15px', 
         margin: '20px', 
