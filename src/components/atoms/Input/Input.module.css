@@ -1,24 +1,24 @@
 .inputWrapper {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px; /* Відступи між блоками вводу */
-  }
-  
-  .label {
-    margin-bottom: 5px;
-    font-weight: bold;
-    font-size: 14px;
-  }
-  
-  .inputField {
-    padding: 10px;
-    border: 1px solid #ccc; /* Рамка */
-    border-radius: 4px;
-    font-size: 16px;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  
-  .inputField:focus {
-    border-color: #007bff; /* Колір рамки при фокусі */
-  }
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px; /* Відступи між блоками вводу */
+}
+
+.label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.inputField {
+  padding: 10px;
+  border: 1px solid #ccc; /* Рамка */
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.inputField:focus {
+  border-color: #007bff; /* Колір рамки при фокусі */
+}

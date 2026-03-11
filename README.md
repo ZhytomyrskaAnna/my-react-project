@@ -16,12 +16,15 @@ The React Compiler is not enabled on this template because of its impact on dev 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 
 ## [Практичні роботи](./PRACTICE)
+
 - [Practice 1 Report](./PRACTICE/practice1.md)
 - Practice 2 Report
 - Practice 3 Report
 - Practice 4 Report
 - Practice 5 Report
+
 ## [Лабораторні роботи](./LABS)
+
 - [Lab 1 Report](./LABS/lab1.md)
 - Lab 2 Report
 - Lab 3 Report

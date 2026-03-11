@@ -23,6 +23,19 @@ function App() {
         </ul>
       </div>
 
+      <div style={{ padding: '20px', backgroundColor: '#e8f5e9', marginTop: '20px' }}>
+        <h2>Успішні студенти (бал {'>'} 60)</h2>
+        <ul>
+          {students
+            .filter((student) => student.score > 60)
+            .map((student) => (
+              <li key={student.id} style={{ color: 'green', fontWeight: 'bold' }}>
+                {student.name} — {student.score} балів
+              </li>
+            ))}
+        </ul>
+      </div>
+
       <div style={{ 
         display: 'flex', 
         justifyContent: 'center', 

@@ -1,7 +1,7 @@
-import styles from './Card.module.css';
+import styles from "./Card.module.css";
 
 /**
- * @param {ReactNode} children 
+ * @param {ReactNode} children
  */
 const Card = ({ children }) => {
   return <div className={styles.card}>{children}</div>;
