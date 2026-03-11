@@ -5,6 +5,10 @@ import Header from "./components/organisma/Header.jsx";
 import { students } from './data';
 
 function App() {
+  // 1. Обчислення (завжди робимо перед return)
+  const totalScore = students.reduce((acc, student) => acc + student.score, 0);
+  const averageScore = students.length > 0 ? (totalScore / students.length).toFixed(1) : 0;
+
   const handleLogin = () => {
     alert('Логіка входу буде реалізована пізніше');
   };
@@ -12,8 +16,20 @@ function App() {
   return (
     <>
       
+      <div style={{ 
+        padding: '15px', 
+        margin: '20px', 
+        backgroundColor: '#fff3e0', 
+        borderRadius: '8px',
+        border: '1px solid #ffb74d' 
+      }}>
+        <h3>Статистика курсу</h3>
+        <p>Загальна кількість студентів: <strong>{students.length}</strong></p>
+        <p>Середній бал групи: <strong style={{ color: '#e65100' }}>{averageScore}</strong></p>
+      </div>
+
       <div style={{ padding: '20px' }}>
-        <h1>Список студентів</h1>
+        <h1>Список всіх студентів</h1>
         <ul>
           {students.map((student) => (
             <li key={student.id}>
@@ -36,33 +52,27 @@ function App() {
         </ul>
       </div>
 
+      
       <div style={{ 
         display: 'flex', 
         justifyContent: 'center', 
         alignItems: 'center', 
-        minHeight: '60vh', // Змінив height на minHeight, щоб список зверху не перекривався
+        padding: '40px 0',
         backgroundColor: '#f0f2f5' 
       }}>
         <Card>
           <h2 style={{ marginBottom: '20px', textAlign: 'center' }}>
             Ласкаво просимо
           </h2>
-
           <div style={{ marginBottom: '15px' }}>
             <Input type="email" placeholder="Email" label="Електронна пошта" />
           </div>
-
           <div style={{ marginBottom: '20px' }}>
             <Input type="password" placeholder="Пароль" label="Ваш пароль" />
           </div>
-
           <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
-            <Button onClick={handleLogin} variant="primary">
-              Увійти
-            </Button>
-            <Button variant="secondary">
-              Реєстрація
-            </Button>
+            <Button onClick={handleLogin} variant="primary">Увійти</Button>
+            <Button variant="secondary">Реєстрація</Button>
           </div>
         </Card>
       </div>
