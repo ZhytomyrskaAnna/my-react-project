@@ -1,3 +1,5 @@
+export const categories = ["All", "News", "Updates"];
+
 export const postsData = [
   {
     id: 1,
@@ -5,7 +7,8 @@ export const postsData = [
     avatar: "https://placehold.co",
     content: "Це мій перший пост у новій соціальній мережі! React — це круто.",
     date: "2 год тому",
-    likes: 5
+    likes: 5,
+    category: "Updates"
   },
   {
     id: 2,
@@ -13,7 +16,8 @@ export const postsData = [
     avatar: "https://placehold.co",
     content: "Сьогодні ми вивчаємо Lists & Keys. Не забувайте про унікальні ключі! Це критично для продуктивності.",
     date: "4 год тому",
-    likes: 12
+    likes: 12,
+    category: "News"
   },
   {
     id: 3,
@@ -21,7 +25,8 @@ export const postsData = [
     avatar: "https://placehold.co",
     content: "Лабораторна робота №2 виконується успішно. Залишилося налаштувати GitHub Pages!",
     date: "1 день тому",
-    likes: 2
+    likes: 2,
+    category: "Updates"
   },
   {
     id: 4,
@@ -29,15 +34,17 @@ export const postsData = [
     avatar: "https://placehold.co",
     content: "Вийшло оновлення Vite 6.0! Швидкість збірки стала ще вищою. Хто вже пробував?",
     date: "3 год тому",
-    likes: 45
+    likes: 45,
+    category: "News"
   },
   {
     id: 5,
     author: "CoffeeCode",
     avatar: "https://placehold.co",
-    content: "Перетворив каву на код... знову. Багів стало менше, але спати хочеться більше. ",
+    content: "Перетворив каву на код... знову. Багів стало менше, але спати хочеться більше.",
     date: "5 год тому",
-    likes: 89
+    likes: 89,
+    category: "Updates"
   },
   {
     id: 6,
@@ -45,7 +52,8 @@ export const postsData = [
     avatar: "https://placehold.co",
     content: "Метод .reduce() — це справжня магія. Один рядок коду замінює десятки рядків циклів!",
     date: "10 год тому",
-    likes: 33
+    likes: 33,
+    category: "News"
   },
   {
     id: 7,
@@ -53,7 +61,8 @@ export const postsData = [
     avatar: "https://placehold.co",
     content: "Мій перший Merge Request щойно прийняли! Відчуття просто неймовірні.",
     date: "2 дні тому",
-    likes: 156
+    likes: 156,
+    category: "Updates"
   }
 ];
 

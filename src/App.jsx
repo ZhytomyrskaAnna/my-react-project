@@ -3,8 +3,9 @@ import Input from './components/atoms/Input/Input.jsx';
 import Card from './components/molecules/Card/Card.jsx'; 
 import Header from "./components/organisma/Header.jsx";
 import Post from './components/molecules/Post/Post.jsx';
+import SearchBar from "./components/molecules/SearchBar/SearchBar.jsx";
 import styles from './App.module.css';
-import { students, postsData } from './data';
+import { students, postsData, categories } from './data';
 import { useState } from 'react';
 
 function App() {
@@ -12,16 +13,30 @@ function App() {
   const [showHelp, setShowHelp] = useState(false);
   const [filterActive, setFilterActive] = useState(false);
   const [activeTab, setActiveTab] = useState('list');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [activeCategory, setActiveCategory]=useState("All");
   
   const totalScore = students.reduce((acc, student) => acc + (student.score || 0), 0);
   const averageScore = students.length > 0 ? (totalScore / students.length).toFixed(1) : 0;;
 
-   const studentsToDisplay = filterActive 
+  const studentsToDisplay = filterActive 
     ? students.filter(s => s.score > 60) 
     : students;
 
+  const filteredPosts = postsData.filter((post) =>{
+    const matchesSearch =
+      post.content.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.author.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory =
+      activeCategory === "All" || post.category === activeCategory;
+
+     return matchesSearch && matchesCategory; 
+  })  
+
   const handleLogin = () => {
     alert('Логіка входу буде реалізована пізніше');
+
+
   };
 
   return (
@@ -100,7 +115,7 @@ function App() {
         {activeTab === 'about' && (
           <Card>
             <h2>Про автора</h2>
-            <p>Цю лабораторну роботу виконав студент групи 101.</p>
+            <p>Цю лабораторну роботу виконала студентка групи КН-22 Житомирська Анна.</p>
             <p>Вивчення React: Списки, Ключі, Умовний рендеринг та Стан.</p>
           </Card>
         )}
@@ -111,11 +126,38 @@ function App() {
       {/* СТРІЧКА НОВИН */}
       <section style={{ padding: '20px', backgroundColor: '#f9f9f9' }}>
         <h2 style={{ textAlign: 'center' }}>Стрічка новин</h2>
-        <div style={{ maxWidth: '600px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          {postsData.map((post) => (
-            <Post key={post.id} {...post} />
+        
+        <SearchBar
+          searchTerm={searchTerm}
+          onSearchChange={setSearchTerm}
+        />
+        
+        <div style={{ display: "flex", gap: "10px", justifyContent: "center", margin: "20px 0" }}>
+          {categories.map((cat) => (
+          <Button
+            key={cat}
+            onClick={() => setActiveCategory(cat)}
+            className={activeCategory === cat ? styles.active : ""}
+          >
+            {cat}
+          </Button>
           ))}
         </div>
+
+        <div style={{ maxWidth: '600px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+    
+          {filteredPosts.length > 0 ? (
+            filteredPosts.map((post) => (
+              <Post key={post.id} {...post} />
+            ))
+          ) : (
+            <p style={{ textAlign: "center", color: "gray" }}>
+              Нічого не знайдено за вашим запитом
+            </p>
+          )}
+
+        </div>
+      
       </section>
 
       {/* ФОРМА ВХОДУ */}
