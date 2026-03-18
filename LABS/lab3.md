@@ -2,7 +2,7 @@
 
 ## [Посилання на останній коміт](https://github.com/ZhytomyrskaAnna/my-react-project/commit/edfb945a5bfacd44334ed12e5eab01e7c95b51f9)
 
-## [Посилання на розгорнуту версію (GitHub Pages/Vercel).](https://github.com/ZhytomyrskaAnna/my-react-project/actions/runs/23046415955)
+## [Посилання на розгорнуту версію (GitHub Pages/Vercel).](https://zhytomyrskaanna.github.io/my-react-project/)
 
 ## [Фрагмент коду з логікою роботи пошуку]()
 ```jsx
