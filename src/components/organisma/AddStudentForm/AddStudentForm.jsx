@@ -96,6 +96,8 @@ const validate = (values) => {
           value={formData.score}
           onChange={handleChange}
           placeholder="0-100"
+          min={0}
+          max={100}
         />
         {errors.score && <p className={styles.error}>{errors.score}</p>}
   
