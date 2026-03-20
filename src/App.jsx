@@ -4,8 +4,10 @@ import Card from './components/molecules/Card/Card.jsx';
 import Header from "./components/organisma/Header.jsx";
 import Post from './components/molecules/Post/Post.jsx';
 import SearchBar from "./components/molecules/SearchBar/SearchBar.jsx";
+import AddStudentForm from "./components/organisma/AddStudentForm/AddStudentForm.jsx";
 import styles from './App.module.css';
 import { students, postsData, categories } from './data';
+import { students as initialStudents } from './data';
 import { useState } from 'react';
 
 function App() {
@@ -15,6 +17,7 @@ function App() {
   const [activeTab, setActiveTab] = useState('list');
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory]=useState("All");
+  const [students, setStudents] = useState(initialStudents);
   
   const totalScore = students.reduce((acc, student) => acc + (student.score || 0), 0);
   const averageScore = students.length > 0 ? (totalScore / students.length).toFixed(1) : 0;;
@@ -37,6 +40,10 @@ function App() {
     alert('Логіка входу буде реалізована пізніше');
 
 
+  };
+
+  const handleAddStudent = (newStudent) => {
+    setStudents([...students, newStudent]);
   };
 
   return (
@@ -80,6 +87,9 @@ function App() {
         {activeTab === 'list' && (
           <div>
             <h1>{filterActive ? "Успішні студенти" : "Повний список"}</h1>
+
+            <AddStudentForm onAddStudent={handleAddStudent}/>
+
             <Button onClick={() => setFilterActive(!filterActive)} variant="primary">
               {filterActive ? "Показати всіх" : "Тільки успішні (>60)"}
             </Button>

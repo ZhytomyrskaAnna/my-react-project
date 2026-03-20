@@ -1,6 +1,7 @@
 import { useState } from "react";
-import Input from "./atoms/Input";
-import Button from "./atoms/Button";
+import Input from "../../atoms/Input/Input";
+import Button from "../../atoms/Button/Button";
+import styles from "./AddStudentForm.module.css";
 
 //Function validation
 const validate = (values) => {
@@ -78,15 +79,15 @@ const validate = (values) => {
       Object.keys(errors).length === 0;
   
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <Input
           label="Прізвище та ім'я:"
           name="name"
           value={formData.name}
           onChange={handleChange}
-          placeholder="Введіть ПІБ"
+          placeholder="Введіть Прізвище та Ім'я"
         />
-        {errors.name && <p style={{ color: "red" }}>{errors.name}</p>}
+        {errors.name && <p className={styles.error}>{errors.name}</p>}
   
         <Input
           label="Бал студента:"
@@ -96,9 +97,9 @@ const validate = (values) => {
           onChange={handleChange}
           placeholder="0-100"
         />
-        {errors.score && <p style={{ color: "red" }}>{errors.score}</p>}
+        {errors.score && <p className={styles.error}>{errors.score}</p>}
   
-        <Button type="submit" disabled={!isFormValid}>
+        <Button type="submit" className={styles.button} disabled={!isFormValid}>
           Додати студента
         </Button>
       </form>
