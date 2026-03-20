@@ -48,6 +48,15 @@ function App() {
 
   return (
     <>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element = {<Home />} />
+          <Route path="feed" element ={<Feed />} />
+          <Route path="feed/:postId" element ={<PoatPage />} />
+          <Route path="profile/*" element ={<Profile />} />
+          <Route path="*" element ={<NotFound />} />
+        </Route>
+      </Routes>
       
       <nav style={{ 
         display: 'flex', 
