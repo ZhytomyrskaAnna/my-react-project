@@ -1,13 +1,23 @@
-.container {
-    padding: 2rem;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .card {
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    padding: 2rem;
-    background-color: #f8fafc;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  }
+.card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 16px;
+  width: 300px;
+  margin: 20px auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background-color: #fff;
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+.text {
+  margin: 5px 0;
+}
+
+.status {
+  margin-top: 10px;
+  font-weight: bold;
+}

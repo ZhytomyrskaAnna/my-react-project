@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import SearchBar from '../../moleculas/SearchBar';
-import Button from '../../atoms/Button';
-import Post from '../../moleculas/Post';
-import { mockPosts } from '../../../DATA/mockPosts';
+import SearchBar from '../../molecules/SearchBar/SearchBar.jsx';
+import Button from '../../atoms/Button/Button.jsx';
+import Post from '../../molecules/Post/Post.jsx';
+import { postsData } from '../../../data.js';
 
 const Feed = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
 
-  const filteredPosts = mockPosts.filter((post) => {
+  const filteredPosts = postsData.filter((post) => {
     const matchesSearch =
       post.content.toLowerCase().includes(searchTerm.toLowerCase()) ||
       post.author.toLowerCase().includes(searchTerm.toLowerCase());
@@ -39,7 +39,7 @@ const Feed = () => {
             <div key={post.id} style={{ marginBottom: '16px' }}>
               <Post {...post} />
               <Link
-                to={`/lab3/${post.id}`}
+                to={`/feed/${post.id}`}
                 style={{
                   display: 'inline-block',
                   marginTop: '8px',
@@ -51,7 +51,7 @@ const Feed = () => {
             </div>
           ))
         ) : (
-          <p text="Нічого не знайдено за вашим запитом." />
+          <p>"Нічого не знайдено за вашим запитом."</p>
         )}
       </div>
     </section>

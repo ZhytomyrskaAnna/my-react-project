@@ -1,20 +1,37 @@
-import { useContext } from 'react';
-import { AuthContext } from '../../../context/AuthContext';
-import Button from '../../atoms/Button';
-import styles from './Profile.module.css';
+import React from "react";
 
 const Profile = () => {
-  const { user, logout } = useContext(AuthContext);
+  const user = {
+    name: "Анна",
+    age: 20,
+    email: "anna@example.com",
+    isOnline: true,
+  };
 
   return (
-    <div className={styles.container}>
-      <h2>Особистий кабінет</h2>
-      <div className={styles.card}>
-        <p><strong>Email:</strong> {user?.email || 'Не вказано'}</p>
-        {user?.name && <p><strong>Ім'я:</strong> {user.name}</p>}
-        <br />
-        <Button onClick={logout} variant="secondary">Вийти з акаунту</Button>
-      </div>
+    <div style={styles.card}>
+      <h2 style={styles.title}>Профіль користувача</h2>
+
+      <p style={styles.text}>
+        <strong>Ім'я:</strong> {user.name}
+      </p>
+
+      <p style={styles.text}>
+        <strong>Вік:</strong> {user.age}
+      </p>
+
+      <p style={styles.text}>
+        <strong>Email:</strong> {user.email}
+      </p>
+
+      <p
+        style={{
+          ...styles.status,
+          color: user.isOnline ? "green" : "red",
+        }}
+      >
+        {user.isOnline ? "Онлайн" : "Офлайн"}
+      </p>
     </div>
   );
 };

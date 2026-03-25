@@ -5,13 +5,15 @@ import Header from "./components/organisma/Header.jsx";
 import Post from './components/molecules/Post/Post.jsx';
 import SearchBar from "./components/molecules/SearchBar/SearchBar.jsx";
 import AddStudentForm from "./components/organisma/AddStudentForm/AddStudentForm.jsx";
-import Home from './components/pages/Home/Home';
-import Feed from './components/pages/Feed/Feed';
-import Practice1 from './components/pages/practice1/Practice1';
-import NotFound from './components/pages/NotFound/NotFound';
-import Profile from './components/pages/Profile/Profile';
-
+import MainLayout from './components/templates/MainLayout/MainLayout';
+import Home from './components/pages/Home/Home.jsx';
+import Feed from './components/pages/Feed/Feed.jsx';
+import Practice1 from './components/pages/Practice1/Practice1.jsx';
+import Practice2 from './components/pages/Practice2/Practice2.jsx';
+import NotFound from './components/pages/NotFound/NotFound.jsx';
+import Profile from './components/pages/Profile/Profile.jsx';
 import styles from './App.module.css';
+import { Routes, Route } from 'react-router-dom'
 import { students, postsData, categories } from './data';
 import { students as initialStudents } from './data';
 import { useState } from 'react';
@@ -59,6 +61,7 @@ function App() {
           <Route index element = {<Home />} />
           <Route path="feed" element ={<Feed />} />
           <Route path="practice1" element={<Practice1 />} />
+          <Route path="practice2" element={<Practice2 />} />
           <Route path="profile/*" element ={<Profile />} />
           <Route path="*" element ={<NotFound />} />
         </Route>
