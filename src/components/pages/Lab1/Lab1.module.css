@@ -1,0 +1,24 @@
+.pageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* Висота для контенту всередині MainLayout */
+  background-color: #f0f2f5;
+}
+
+.title {
+  margin-bottom: 24px;
+  text-align: center;
+  color: #1c1e21;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 24px;
+}
