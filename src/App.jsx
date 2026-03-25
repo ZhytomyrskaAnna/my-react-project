@@ -13,6 +13,7 @@ import Practice2 from './components/pages/Practice2/Practice2.jsx';
 import Practice3 from './components/pages/Practice3/Practice3.jsx';
 import Practice4 from './components/pages/Practice4/Practice4.jsx';
 import Lab1 from './components/pages/Lab1/Lab1.jsx';
+import Lab2 from './components/pages/Lab2/Lab2.jsx';
 import NotFound from './components/pages/NotFound/NotFound.jsx';
 import Profile from './components/pages/Profile/Profile.jsx';
 import styles from './App.module.css';
@@ -68,6 +69,7 @@ function App() {
           <Route path="practice3" element={<Practice3 />} />
           <Route path="practice4" element={<Practice4 />} />
           <Route path="lab1" element={<Lab1 />} />
+          <Route path="lab2" element={<Lab2 />} />
           <Route path="profile/*" element ={<Profile />} />
           <Route path="*" element ={<NotFound />} />
         </Route>
