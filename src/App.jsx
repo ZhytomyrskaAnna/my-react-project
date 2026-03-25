@@ -10,6 +10,7 @@ import Home from './components/pages/Home/Home.jsx';
 import Feed from './components/pages/Feed/Feed.jsx';
 import Practice1 from './components/pages/Practice1/Practice1.jsx';
 import Practice2 from './components/pages/Practice2/Practice2.jsx';
+import Practice3 from './components/pages/Practice3/Practice3.jsx';
 import NotFound from './components/pages/NotFound/NotFound.jsx';
 import Profile from './components/pages/Profile/Profile.jsx';
 import styles from './App.module.css';
@@ -62,6 +63,7 @@ function App() {
           <Route path="feed" element ={<Feed />} />
           <Route path="practice1" element={<Practice1 />} />
           <Route path="practice2" element={<Practice2 />} />
+          <Route path="practice3" element={<Practice3 />} />
           <Route path="profile/*" element ={<Profile />} />
           <Route path="*" element ={<NotFound />} />
         </Route>
