@@ -8,6 +8,7 @@ import AddStudentForm from "./components/organisma/AddStudentForm/AddStudentForm
 import MainLayout from './components/templates/MainLayout/MainLayout';
 import Home from './components/pages/Home/Home.jsx';
 import Feed from './components/pages/Feed/Feed.jsx';
+import PostDetails from './components/pages/Feed/PostDetails.jsx';
 import Practice1 from './components/pages/Practice1/Practice1.jsx';
 import Practice2 from './components/pages/Practice2/Practice2.jsx';
 import Practice3 from './components/pages/Practice3/Practice3.jsx';
@@ -66,6 +67,7 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           <Route index element = {<Home />} />
           <Route path="feed" element ={<Feed />} />
+          <Route path="/feed/:postId" element={<PostDetails />} />
           <Route path="practice1" element={<Practice1 />} />
           <Route path="practice2" element={<Practice2 />} />
           <Route path="practice3" element={<Practice3 />} />

@@ -9,3 +9,5 @@ const ProfileOverview = () => {
     </div>
   );
 };
+
+export default ProfileOverview;
