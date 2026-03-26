@@ -20,7 +20,7 @@ If you are developing a production application, we recommend using TypeScript wi
 - [Practice 1 Report](./PRACTICE/practice1.md)
 - [Practice 2 Report](./PRACTICE/practice2.md)
 - [Practice 3 Report](./PRACTICE/practice3.md)
-- Practice 4 Report
+- [Practice 4 Report](./PRACTICE/practice4.md)
 - Practice 5 Report
 - Practice 6 Report
 
@@ -28,8 +28,8 @@ If you are developing a production application, we recommend using TypeScript wi
 
 - [Lab 1 Report](./LABS/lab1.md)
 - [Lab 2 Report](./LABS/lab2.md)
-- Lab 3 Report
-- Lab 4 Report
+- [Lab 3 Report](./LABS/lab3.md)
+- [Lab 4 Report](./LABS/lab4.md)
 - Lab 5 Report
 - Lab 6 Report
 - Lab 7 Report
