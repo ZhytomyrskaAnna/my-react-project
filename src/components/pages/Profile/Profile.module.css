@@ -1,0 +1,72 @@
+.profileLayout {
+  display: flex;
+  gap: 2rem;
+  min-height: 400px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #f8f9fa;
+  padding: 2rem 1.5rem;
+  border-right: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebarTitle {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  color: #2c3e50;
+}
+
+.sideNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1;
+}
+
+.link {
+  text-decoration: none;
+  color: #666;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.link:hover {
+  background-color: #e9ecef;
+  color: #000;
+}
+
+.activeLink {
+  ime-mode: link;
+  background-color: #007bff;
+  color: white !important;
+  font-weight: 600;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 2rem;
+}
+
+.logoutBtn {
+  margin-top: auto;
+  padding: 0.8rem;
+  background: none;
+  border: 1px solid #ff4d4d;
+  color: #ff4d4d;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logoutBtn:hover {
+  background: #ff4d4d;
+  color: white;
+}

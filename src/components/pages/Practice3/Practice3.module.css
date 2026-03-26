@@ -1,0 +1,46 @@
+.container {
+  min-height: 100vh;
+  background-color: #f0f2f5;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.title {
+  text-align: center;
+  color: #1a1a1b;
+  margin-bottom: 30px;
+}
+
+.searchWrapper {
+  margin-bottom: 20px;
+}
+
+.categories {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.postsList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.emptyMsg {
+  text-align: center;
+  color: #65676b;
+  font-size: 1.1rem;
+  margin-top: 40px;
+}
+
+.activeBtn {
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  transform: scale(1.05);
+}

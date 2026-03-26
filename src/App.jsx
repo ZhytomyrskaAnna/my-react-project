@@ -5,7 +5,22 @@ import Header from "./components/organisma/Header.jsx";
 import Post from './components/molecules/Post/Post.jsx';
 import SearchBar from "./components/molecules/SearchBar/SearchBar.jsx";
 import AddStudentForm from "./components/organisma/AddStudentForm/AddStudentForm.jsx";
+import MainLayout from './components/templates/MainLayout/MainLayout';
+import Home from './components/pages/Home/Home.jsx';
+import Feed from './components/pages/Feed/Feed.jsx';
+import PostDetails from './components/pages/Feed/PostDetails.jsx';
+import Practice1 from './components/pages/Practice1/Practice1.jsx';
+import Practice2 from './components/pages/Practice2/Practice2.jsx';
+import Practice3 from './components/pages/Practice3/Practice3.jsx';
+import Practice4 from './components/pages/Practice4/Practice4.jsx';
+import Lab1 from './components/pages/Lab1/Lab1.jsx';
+import Lab2 from './components/pages/Lab2/Lab2.jsx';
+import Lab3 from './components/pages/Lab3/Lab3.jsx';
+import Lab4 from './components/pages/Lab4/Lab4.jsx';
+import NotFound from './components/pages/NotFound/NotFound.jsx';
+import Profile from './components/pages/Profile/Profile.jsx';
 import styles from './App.module.css';
+import { Routes, Route } from 'react-router-dom'
 import { students, postsData, categories } from './data';
 import { students as initialStudents } from './data';
 import { useState } from 'react';
@@ -48,6 +63,23 @@ function App() {
 
   return (
     <>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element = {<Home />} />
+          <Route path="feed" element ={<Feed />} />
+          <Route path="/feed/:postId" element={<PostDetails />} />
+          <Route path="practice1" element={<Practice1 />} />
+          <Route path="practice2" element={<Practice2 />} />
+          <Route path="practice3" element={<Practice3 />} />
+          <Route path="practice4" element={<Practice4 />} />
+          <Route path="lab1" element={<Lab1 />} />
+          <Route path="lab2" element={<Lab2 />} />
+          <Route path="lab3" element={<Lab3 />} />
+          <Route path="lab4" element={<Lab4 />} />
+          <Route path="profile/*" element ={<Profile />} />
+          <Route path="*" element ={<NotFound />} />
+        </Route>
+      </Routes>
       
       <nav style={{ 
         display: 'flex', 

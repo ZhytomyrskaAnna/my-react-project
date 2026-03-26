@@ -1,0 +1,60 @@
+.container {
+  padding: 20px;
+  background-color: #f9f9fb;
+  min-height: 100vh;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.formSection, .listSection {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.error {
+  color: #ff4d4f;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.studentCard {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.studentCard:last-child {
+  border-bottom: none;
+}
+
+/* Стиль для неактивної кнопки */
+button:disabled {
+  background-color: #ccc !important;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .wrapper { grid-template-columns: 1fr; }
+}
