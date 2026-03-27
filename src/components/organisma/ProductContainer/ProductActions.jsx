@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../../atoms/Button/Button';
 
 const ProductActions = ({ price, quantity, setQuantity, onBuy }) => {
   return (
@@ -9,18 +10,18 @@ const ProductActions = ({ price, quantity, setQuantity, onBuy }) => {
       
       <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
         <div style={{ display: 'flex', border: '1px solid #ddd', borderRadius: '8px' }}>
-          <button 
+          <Button 
             onClick={() => setQuantity(Math.max(1, quantity - 1))}
             style={{ padding: '8px 15px', border: 'none', background: 'none', cursor: 'pointer' }}
-          >-</button>
+          >-</Button>
           <span style={{ padding: '8px 10px', minWidth: '30px', textAlign: 'center' }}>{quantity}</span>
-          <button 
+          <Button 
             onClick={() => setQuantity(quantity + 1)}
             style={{ padding: '8px 15px', border: 'none', background: 'none', cursor: 'pointer' }}
-          >+</button>
+          >+</Button>
         </div>
 
-        <button 
+        <Button 
           onClick={onBuy}
           style={{ 
             flex: 1, padding: '12px', borderRadius: '8px', border: 'none',
@@ -28,7 +29,7 @@ const ProductActions = ({ price, quantity, setQuantity, onBuy }) => {
           }}
         >
           Купити
-        </button>
+        </Button>
       </div>
     </div>
   );
