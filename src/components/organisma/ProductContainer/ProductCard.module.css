@@ -1,0 +1,60 @@
+
+
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e1e1e1;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  max-width: 350px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  border-color: #007bff;
+}
+
+.imageWrapper {
+  background-color: #f8f9fa;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+}
+
+.imageWrapper img {
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .imageWrapper img {
+  transform: scale(1.08);
+}
+
+.content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.buyButton {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+
+}
+
+.buyButton:hover {
+  background-color: #333;
+}
