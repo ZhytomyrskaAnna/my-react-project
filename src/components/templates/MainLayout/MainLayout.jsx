@@ -1,8 +1,13 @@
 import { NavLink, Outlet } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../../context/AuthContext';
 import styles from './MainLayout.module.css';
 import Header from '../../organisma/Header';
 
 const MainLayout = () => {
+
+  const { isAuthenticated } = useContext(AuthContext);
+
   const getActiveClass = ({ isActive }) =>
     isActive ? `${styles.link} ${styles.active}` : styles.link;
 
@@ -21,7 +26,15 @@ const MainLayout = () => {
         <NavLink to="/lab2" className={getActiveClass}>Лабораторна робота №2</NavLink>
         <NavLink to="/lab3" className={getActiveClass}>Лабораторна робота №3</NavLink>
         <NavLink to="/lab4" className={getActiveClass}>Лабораторна робота №4</NavLink>
-        <NavLink to="/profile" className={getActiveClass}>Профіль</NavLink>
+        <NavLink to="/lab5" className={getActiveClass}>Лабораторна 5</NavLink>
+        {isAuthenticated ? (
+          <NavLink to="/profile" className={getActiveClass}>Особистий кабінет</NavLink>
+        ) : (
+          <>
+            <NavLink to="/login" className={getActiveClass}>Вхід</NavLink>
+            <NavLink to="/register" className={getActiveClass}>Реєстрація</NavLink>
+          </>
+        )}
       </nav>
       <main className={styles.mainContent}>
         <Outlet />
