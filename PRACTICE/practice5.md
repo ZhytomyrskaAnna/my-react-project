@@ -5,7 +5,7 @@
 
 ## 1. Посилання
 [* **GitHub-репозиторій**:](https://github.com/ZhytomyrskaAnna/my-react-project) 
-[* **Розгорнута версія додатку (Vercel/GitHub Pages)**:]() 
+[* **Розгорнута версія додатку (Vercel/GitHub Pages)**:](https://zhytomyrskaanna.github.io/my-react-project/) 
 
 ---
 
