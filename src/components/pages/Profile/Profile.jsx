@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { AuthContext } from '../../../context/AuthContext';
-import Button from '../../atoms/Button';
+import Button from '../../atoms/Button/Button.jsx';
 import styles from './Profile.module.css';
 
 const Profile = () => {

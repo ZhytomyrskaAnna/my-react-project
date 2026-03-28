@@ -1,8 +1,8 @@
 import { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthContext';
-import Input from '../../atoms/Input';
-import Button from '../../atoms/Button';
+import Input from '../../atoms/Input/Input';
+import Button from '../../atoms/Button/Button';
 import styles from './Login.module.css';
 
 const Login = () => {
