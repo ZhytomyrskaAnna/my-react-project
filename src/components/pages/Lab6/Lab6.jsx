@@ -8,11 +8,11 @@ import {
   filterByIngredient,
   getRandomCocktail
 } from '../../../api/cocktailApi';
-import CocktailCard from '../../moleculas/CocktailCard';
-import FilterBar from '../../moleculas/FilterBar';
-import CocktailCardSkeleton from '../../moleculas/CocktailCardSkeleton';
-import Button from '../../atoms/Button';
-import Input from '../../atoms/Input';
+import CocktailCard from '../../molecules/CocktailCard/CocktailCard';
+import FilterBar from '../../molecules/FilterBar/FilterBar';
+import CocktailCardSkeleton from '..//../molecules/CocktailCardSkeleton/CocktailCardSkeleton';
+import Button from '../../atoms/Button/Button';
+import Input from '../../atoms/Input/Input';
 import styles from './Lab6.module.css';
 
 const Lab6 = () => {

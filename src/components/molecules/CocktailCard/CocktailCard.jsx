@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Badge from '../atoms/Badge';
+import Badge from '../../atoms/Badge/Badge';
 import styles from './CocktailCard.module.css';
 
 const CocktailCard = ({ cocktail }) => {

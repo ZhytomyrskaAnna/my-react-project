@@ -1,5 +1,5 @@
 import styles from './CocktailCardSkeleton.module.css';
-import skeletonStyles from '../atoms/Skeleton.module.css';
+import skeletonStyles from '../../atoms/Skeleton.module.css'
 
 const CocktailCardSkeleton = () => {
   return (

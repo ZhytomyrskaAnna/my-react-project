@@ -4,7 +4,7 @@ import {
   getGlassesList, 
   getIngredientsList, 
   getAlcoholicList 
-} from '../../api/cocktailApi';
+} from '../../../api/cocktailApi';
 import styles from './FilterBar.module.css';
 
 const FilterBar = ({ onFilterChange }) => {
