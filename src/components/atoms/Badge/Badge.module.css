@@ -1,0 +1,30 @@
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+}
+
+.default {
+  background-color: var(--color-surface, #e2e8f0);
+  color: var(--color-text, #1e293b);
+}
+
+.primary {
+  background-color: var(--color-primary, #3b82f6);
+  color: white;
+}
+
+.secondary {
+  background-color: var(--color-secondary, #8b5cf6);
+  color: white;
+}
+
+.success {
+  background-color: var(--color-success, #10b981);
+  color: white;
+}
