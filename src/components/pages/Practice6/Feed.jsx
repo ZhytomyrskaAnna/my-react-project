@@ -26,6 +26,10 @@ const Feed = () => {
     return matchesSearch;
   });
 
+  if (searchTerm.length > 0) {
+    debugger; 
+  }
+
   return (
     <div>
       <h2>Стрічка новин</h2>
@@ -36,6 +40,7 @@ const Feed = () => {
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       <div>
+
         {filteredPosts.length > 0 ? (
           filteredPosts.map((post) => <Post key={post.id} {...post} />)
         ) : (
