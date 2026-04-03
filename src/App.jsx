@@ -20,6 +20,7 @@ import Lab2 from './components/pages/Lab2/Lab2.jsx';
 import Lab3 from './components/pages/Lab3/Lab3.jsx';
 import Lab4 from './components/pages/Lab4/Lab4.jsx';
 import Lab5 from './components/pages/Lab5/Lab5.jsx';
+import Lab6 from './components/pages/Lab6/Lab6.jsx'
 import NotFound from './components/pages/NotFound/NotFound.jsx';
 import Login from './components/pages/Login/Login';
 import Register from './components/pages/Register/Register';
@@ -85,6 +86,7 @@ function App() {
           <Route path="lab3" element={<Lab3 />} />
           <Route path="lab4" element={<Lab4 />} />
           <Route path="lab5" element={<Lab5 />} />
+          <Route path="lab6" element={<Lab6 />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route element={<ProtectedRoute />}>
