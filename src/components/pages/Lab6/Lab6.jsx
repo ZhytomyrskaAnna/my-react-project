@@ -8,6 +8,7 @@ import {
   filterByIngredient,
   getRandomCocktail
 } from '../../../api/cocktailApi';
+import { useFetch } from "../../../hooks/useFetch";
 import CocktailCard from '../../molecules/CocktailCard/CocktailCard';
 import FilterBar from '../../molecules/FilterBar/FilterBar';
 import CocktailCardSkeleton from '..//../molecules/CocktailCardSkeleton/CocktailCardSkeleton';
@@ -16,85 +17,37 @@ import Input from '../../atoms/Input/Input';
 import styles from './Lab6.module.css';
 
 const Lab6 = () => {
-  const [cocktails, setCocktails] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [error, setError] = useState(null);
+  
+  const { data, isLoading:loading, error, performFetch } = useFetch();
+  
+  const cocktails = data?.drinks || [];
 
-  // Load initial data
   useEffect(() => {
-    fetchCocktailsByLetter('a');
-  }, []);
+    performFetch(() => listCocktailsByLetter('a'));
+  }, [performFetch]);
 
-  const handleSearch = async (e) => {
+
+  const handleSearch = (e) => {
     e.preventDefault();
     if (!searchQuery.trim()) return;
-    
-    setLoading(true);
-    setError(null);
-    try {
-      const data = await searchCocktailByName(searchQuery);
-      setCocktails(data.drinks || []);
-      if (!data.drinks) setError('Коктейлів не знайдено');
-    } catch (err) {
-      setError('Помилка завантаження даних');
-    } finally {
-      setLoading(false);
-    }
+    performFetch(() => searchCocktailByName(searchQuery));
   };
 
-  const fetchCocktailsByLetter = async (letter) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const data = await listCocktailsByLetter(letter);
-      setCocktails(data.drinks || []);
-      if (!data.drinks) setError('Немає коктейлів на цю літеру');
-    } catch (err) {
-      setError('Помилка завантаження даних');
-    } finally {
-      setLoading(false);
-    }
+  const handleFilterChange = (type, value) => {
+    if (!value) return performFetch(() => listCocktailsByLetter('a'));
+
+    const apiMethods = {
+      'c': filterByCategory,
+      'a': filterByAlcoholic,
+      'g': filterByGlass,
+      'i': filterByIngredient
+    };
+
+    performFetch(() => apiMethods[type](value));
   };
 
-  const getRandom = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const data = await getRandomCocktail();
-      setCocktails(data.drinks || []);
-    } catch (err) {
-      setError('Помилка завантаження даних');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleFilterChange = async (type, value) => {
-    if (!value) {
-      fetchCocktailsByLetter('a'); // Reset to default
-      return;
-    }
-
-    setLoading(true);
-    setError(null);
-    try {
-      let data;
-      switch (type) {
-        case 'c': data = await filterByCategory(value); break;
-        case 'a': data = await filterByAlcoholic(value); break;
-        case 'g': data = await filterByGlass(value); break;
-        case 'i': data = await filterByIngredient(value); break;
-        default: break;
-      }
-      setCocktails(data?.drinks || []);
-      if (!data?.drinks) setError('Нічого не знайдено за цим фільтром');
-    } catch (err) {
-      setError('Помилка завантаження даних');
-    } finally {
-      setLoading(false);
-    }
-  };
+  const getRandom = () => performFetch(getRandomCocktail);
 
   const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
