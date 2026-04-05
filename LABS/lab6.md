@@ -1,6 +1,6 @@
 # Лабораторна робота 6
 
-## [Посилання на оновлений розгорнутий тестовий стенд (Vercel або GitHub Pages)]()
+## [Посилання на оновлений розгорнутий тестовий стенд (Vercel або GitHub Pages)](https://zhytomyrskaanna.github.io/lab6/11021)
 
 ## [API взаємодія](../src/api/cocktailApi.js)
 ``` js
