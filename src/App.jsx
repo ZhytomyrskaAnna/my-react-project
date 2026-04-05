@@ -15,6 +15,9 @@ import Practice3 from './components/pages/Practice3/Practice3.jsx';
 import Practice4 from './components/pages/Practice4/Practice4.jsx';
 import Practice5 from './components/pages/Practice5/Practice5.jsx';
 import Practice6 from './components/pages/Practice6/Practice6.jsx';
+import Practice7 from './components/pages/Practice7/Practice7.jsx';
+import NewsFeed from './components/pages/Practice7/NewsFeed.jsx';
+import PostDetailsP7 from './components/pages/Practice7/PostDetails.jsx';
 import Lab1 from './components/pages/Lab1/Lab1.jsx';
 import Lab2 from './components/pages/Lab2/Lab2.jsx';
 import Lab3 from './components/pages/Lab3/Lab3.jsx';
@@ -82,6 +85,10 @@ function App() {
           <Route path="practice4" element={<Practice4 />} />
           <Route path="practice5" element={<Practice5 />} />
           <Route path="practice6" element={<Practice6 />} />
+          <Route path='practice7' element={<Practice7 />} >
+            <Route index element={<NewsFeed />} />
+            <Route path="post/:postId" element={<PostDetailsP7 />} />
+          </Route>
           <Route path="lab1" element={<Lab1 />} />
           <Route path="lab2" element={<Lab2 />} />
           <Route path="lab3" element={<Lab3 />} />
