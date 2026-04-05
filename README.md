@@ -23,6 +23,9 @@ If you are developing a production application, we recommend using TypeScript wi
 - [Practice 4 Report](./PRACTICE/practice4.md)
 - [Practice 5 Report](./PRACTICE/practice5.md)
 - [Practice 6 Report](./PRACTICE/practice6.md)
+- Practice 7 Report
+- Practice 8 Report
+- Practice 9 Report
 
 ## [Лабораторні роботи](./LABS)
 
@@ -31,5 +34,5 @@ If you are developing a production application, we recommend using TypeScript wi
 - [Lab 3 Report](./LABS/lab3.md)
 - [Lab 4 Report](./LABS/lab4.md)
 - [Lab 5 Report](./LABS/lab5.md)
-- Lab 6 Report
-- Lab 7 Report
+- [Lab 6 Report](./LABS/lab6.md)
+
